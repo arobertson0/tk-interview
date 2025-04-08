@@ -1,0 +1,13 @@
+{
+  "name": "tk-interview",
+  "author": "Threekit",
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Threekit interview questions",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "3.1.1"
+  }
+}
