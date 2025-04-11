@@ -23,9 +23,7 @@ describe("String reversal", () => {
     });
 
     test("Another string is reversed", () => {
-        const expectedReverse = "sdrawkcab";
-        const actualReverse = reverseString("backwards");
-        expect(actualReverse).toEqual("sdrawkcab");
+        expect(reverseString("backwards")).toEqual("sdrawkcab");
     });
 
     test("An empty string is reversed", () => {
