@@ -1,4 +1,6 @@
-import { describe, test, expect } from "vitest";
+import assert from "node:assert"
+import { suite, test } from "node:test";
+
 
 import {
     sum,
@@ -7,59 +9,59 @@ import {
     customSort,
 } from "./threekit.mjs";
 
-describe("Sum function", () => {
+suite("Sum function", () => {
     test("Addition is performed correctly", () => {
-        expect(sum(1, 2)).toEqual(3);
+        assert.equal(sum(1, 2), 3);
     });
 
     test("Parameters are validated to be numbers prior to addition", () => {
-        expect(sum(1, "duck")).toEqual("ERROR");
+        assert.equal(sum(1, "duck"), "ERROR");
     });
 });
 
-describe("String reversal", () => {
+suite("String reversal", () => {
     test("A string is reversed", () => {
-        expect(reverseString("millimeter")).toEqual("retemillim");
+        assert.equal(reverseString("millimeter"), "retemillim");
     });
 
     test("Another string is reversed", () => {
-        expect(reverseString("backwards")).toEqual("sdrawkcab");
+        assert.equal(reverseString("backwards"), "sdrawkcab");
     });
 
     test("An empty string is reversed", () => {
-        expect(reverseString("")).toEqual("");
+        assert.equal(reverseString(""), "");
     });
 });
 
-describe("Time conversion", () => {
+suite("Time conversion", () => {
     test("Converts a seconds worth of seconds", () => {
-        expect(toMinutesAndHours(0)).toEqual("0 hour(s) and 0 minute(s)");
+        assert.equal(toMinutesAndHours(1), "0 hour(s) and 0 minute(s)");
     });
 
     test("Converts a 20 seconds worth of seconds", () => {
-        expect(toMinutesAndHours(20)).toEqual("0 hour(s) and 0 minute(s)");
+        assert.equal(toMinutesAndHours(20), "0 hour(s) and 0 minute(s)");
     });
 
     test("Converts a minute worth of seconds", () => {
-        expect(toMinutesAndHours(60)).toEqual("0 hour(s) and 1 minute(s)");
+        assert.equal(toMinutesAndHours(60), "0 hour(s) and 1 minute(s)");
     });
 
     test("Converts an hours worth of seconds", () => {
-        expect(toMinutesAndHours(3600)).toEqual("1 hour(s) and 0 minute(s)");
+        assert.equal(toMinutesAndHours(3600), "1 hour(s) and 0 minute(s)");
     });
 
     test("Converts some ammount of seconds", () => {
-        expect(toMinutesAndHours(27000)).toEqual("7 hour(s) and 30 minute(s)");
+        assert.equal(toMinutesAndHours(27000), "7 hour(s) and 30 minute(s)");
     });
 });
 
-describe("Custom sort function", () => {
+suite("Custom sort function", () => {
     test("An array of numbers is sorted", () => {
         const shuffledArray = [68, 67, 23, 1, 27, 79, 33, 11, 24, 5];
 
         const expectedSortedArray = [1, 5, 11, 23, 24, 27, 33, 67, 68, 79];
         const actualSortedArray = customSort(shuffledArray);
-        expect(actualSortedArray).toStrictEqual(expectedSortedArray);
+        assert.deepEqual(actualSortedArray, expectedSortedArray);
     });
 
     test("Another array of numbers is sorted", () => {
@@ -68,7 +70,7 @@ describe("Custom sort function", () => {
         const expectedSortedArray = [10, 28, 43, 53, 55, 58, 63, 73, 94];
 
         const actualSortedArray = customSort(shuffledArray);
-        expect(actualSortedArray).toStrictEqual(expectedSortedArray);
+        assert.deepEqual(actualSortedArray, expectedSortedArray);
     });
 
     test("An empty array is sorted", () => {
@@ -76,7 +78,7 @@ describe("Custom sort function", () => {
 
         const expectedSortedArray = [];
         const actualSortedArray = customSort(shuffledArray);
-        expect(actualSortedArray).toStrictEqual(expectedSortedArray);
+        assert.deepEqual(actualSortedArray, expectedSortedArray);
     });
 
     test("The array is sorted in place", () => {
@@ -84,7 +86,9 @@ describe("Custom sort function", () => {
 
         const expectedSortedArray = [1, 2, 3];
         const actualSortedArray = customSort(shuffledArray);
-        expect(actualSortedArray).toStrictEqual(expectedSortedArray);
-        expect(actualSortedArray).toBe(shuffledArray);
+        assert.deepEqual(actualSortedArray, expectedSortedArray);
+        assert.deepEqual(shuffledArray, expectedSortedArray);
+
+        assert.strictEqual(actualSortedArray, shuffledArray);
     });
 });
