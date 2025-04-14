@@ -33,7 +33,7 @@ describe("String reversal", () => {
 
 describe("Time conversion", () => {
     test("Converts a seconds worth of seconds", () => {
-        expect(toMinutesAndHours(0)).toEqual("0 hour(s) and 0 minute(s)");
+        expect(toMinutesAndHours(1)).toEqual("0 hour(s) and 0 minute(s)");
     });
 
     test("Converts a 20 seconds worth of seconds", () => {
